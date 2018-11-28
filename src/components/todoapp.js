@@ -3,14 +3,17 @@ import AddTodo from './Addform'
 import Todos from './todos'
 
 class TodoApp extends Component {
-    state = {
-        todos: [
-            {id: 1, content: 'Buy some Milk'},
-            {id: 2, content: 'Play Mario cart'},
-            {id: 3, content: 'Implement dota 2 spider'}
-          ]
-    }
 
+  constructor(props) {
+    super(props);
+    this.state = {todos:
+      this.props.todos
+    };
+  }
+
+  componentWillUnmount(){
+    this.props.changeState(this.state.todos)
+  }
     deleteTodo = (id) => {
         const todos = this.state.todos.filter( todo => {
           return todo.id !== id
@@ -31,7 +34,7 @@ class TodoApp extends Component {
       render(){
           return(
               <div className="container">
-              <h1 className="center blue-text">Todo's</h1>
+                <h1 className="center blue-text">Todo's</h1>
                 <Todos todos = {this.state.todos} deleteTodo = {this.deleteTodo}/>
                 <AddTodo addTodo = {this.addTodo}/>
               </div>
