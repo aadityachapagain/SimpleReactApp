@@ -7,7 +7,6 @@ import About from './components/about';
 import Contact from './components/contact'
 import Post from './components/posts'
 
-
 class App extends Component {
   state  = {
     todos:[
